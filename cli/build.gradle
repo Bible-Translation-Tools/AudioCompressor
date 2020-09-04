@@ -41,3 +41,24 @@ shadowJar {
         )
     }
 }
+
+task copyJre(type: Copy) {
+    if (project.hasProperty("jrePath")) {
+        from jrePath
+        into "${buildDir}/launch4j/jre"
+    }
+}
+
+launch4j {
+    outfile = "${rootProject.name}-${project.name}.exe"
+    mainClassName = project.mainClassName
+    bundledJrePath = "./jre"
+    bundledJre64Bit = true
+    jdkPreference = 'jdkOnly'
+    jar = "${buildDir}/libs/${rootProject.name}-${project.name}.jar"
+    productName = rootProject.name
+    fileDescription = rootProject.name
+}
+
+project.tasks.createExe.dependsOn copyJre
+project.tasks.createExe.dependsOn shadowJar
