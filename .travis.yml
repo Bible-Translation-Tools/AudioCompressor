@@ -12,4 +12,3 @@ cache:
     - "$HOME/.sonar/cache"
 script:
   - "./gradlew check build"
-  - sonar-scanner
