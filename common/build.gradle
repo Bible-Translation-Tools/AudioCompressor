@@ -1,0 +1,13 @@
+repositories {
+    maven { url "https://jitpack.io" }
+}
+
+dependencies {
+    implementation "javazoom:jlayer:$jlayerVer"
+    implementation "de.sciss:jump3r:$jump3rVer"
+    implementation "com.github.WycliffeAssociates:cue-sheet-manager:$cueSheetManagerVer"
+
+    // ReactiveX
+    implementation "io.reactivex.rxjava2:rxkotlin:$rxkotlinVer"
+    implementation "com.github.thomasnield:rxkotlinfx:$rxkotlinfxVer"
+}
