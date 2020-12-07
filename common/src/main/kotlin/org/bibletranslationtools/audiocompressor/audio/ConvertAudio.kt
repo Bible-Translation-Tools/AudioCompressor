@@ -10,7 +10,7 @@ import de.sciss.jump3r.Main as jump3r
 
 class ConvertAudio {
 
-    fun convertDir(dir: File, to: Format): Completable {
+    fun convertDir(dir: File, to: Format, bitrate: String, delete: Boolean): Completable {
         val walk = dir.walkTopDown().filter { it.isFile }
         return walk.toObservable()
             .concatMapCompletable { file ->
@@ -21,11 +21,14 @@ class ConvertAudio {
                             Format.MP3 -> mp3ToWav(
                                 file,
                                 File(file.parentFile, file.name.substringBefore(".mp3") + ".wav"),
-                                File(file.parentFile, file.name.substringBefore(".mp3") + ".cue")
+                                File(file.parentFile, file.name.substringBefore(".mp3") + ".cue"),
+                                delete
                             )
                             Format.WAV -> wavToMp3(
                                 file,
-                                File(file.parentFile, file.name.substringBefore(".wav") + ".mp3")
+                                File(file.parentFile, file.name.substringBefore(".wav") + ".mp3"),
+                                bitrate,
+                                delete
                             )
                         }
                     }
@@ -33,26 +36,29 @@ class ConvertAudio {
             }
     }
 
-    fun mp3ToWav(mp3: File, wav: File, cue: File?) {
+    fun mp3ToWav(mp3: File, wav: File, cue: File?, delete: Boolean) {
         val c = Converter()
         c.convert(mp3.absolutePath, wav.absolutePath)
-        mp3.delete()
+
+        if (delete) mp3.delete()
 
         if (cue != null && cue.exists()) {
             CueWavWriter(cue).write()
-            cue.delete()
+
+            if (delete) cue.delete()
         }
     }
 
-    fun wavToMp3(wav: File, mp3: File) {
+    fun wavToMp3(wav: File, mp3: File, bitrate: String, delete: Boolean) {
         val mp3Args = arrayOf(
-            "-q", "9",
+            "-b", bitrate,
             "-m", "m",
             wav.absolutePath,
             mp3.absolutePath
         )
         jump3r().run(mp3Args)
         CueSheetWriter(wav).write()
-        wav.delete()
+
+        if (delete) wav.delete()
     }
 }
