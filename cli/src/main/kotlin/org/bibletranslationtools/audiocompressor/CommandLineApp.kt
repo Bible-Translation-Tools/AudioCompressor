@@ -13,10 +13,10 @@ class CommandLineApp : Runnable {
     private val logger: Logger = Logger.getLogger(javaClass.name)
     private val controller = CommandLineController()
 
-    @Option(names = ["-i", "--input"], description = ["Input file or directory to convert"])
+    @Option(names = ["-i", "--input"], required = true, description = ["Input file or directory to convert"])
     lateinit var input: File
 
-    @Option(names = ["-f", "--format"], description = ["Target format (MP3 or WAV) to convert to"])
+    @Option(names = ["-f", "--format"], required = true, description = ["Target format (MP3 or WAV) to convert to"])
     lateinit var format: Format
 
     @Option(names = ["-b", "--bitrate"], description = ["Target bitrate (mp3 only)"])
