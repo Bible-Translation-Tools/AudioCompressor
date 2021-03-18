@@ -13,6 +13,7 @@ buildscript {
 }
 
 group 'org.bibletranslationtools'
+version = '0.1.2'
 
 repositories {
     jcenter()
