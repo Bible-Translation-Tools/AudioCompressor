@@ -6,7 +6,7 @@ apply plugin: 'application'
 apply plugin: 'idea'
 apply plugin: 'edu.sc.seis.launch4j'
 
-version = '0.1.1'
+version = '0.2.0'
 
 application {
     mainClassName = "org.bibletranslationtools.audiocompressor.Main"
