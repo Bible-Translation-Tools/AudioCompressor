@@ -10,6 +10,6 @@ ext {
     launch4jVer = '2.4.6'
     jlayerVer = '1.0.1'
     jump3rVer = '1.0.5'
-    cueSheetManagerVer = '1.5.0'
+    cueSheetManagerVer = '1.5.1'
     picocliVer = '4.5.1'
 }
