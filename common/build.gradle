@@ -7,7 +7,7 @@ dependencies {
     implementation "de.sciss:jump3r:$jump3rVer"
     implementation 'com.github.WycliffeAssociates:cuelib:1.2.1'
     implementation "org.bibletranslationtools:cuesheetmanager:$cueSheetManagerVer"
-    implementation 'org.wycliffeassociates.otter.common:audio:0.3.1'
+    implementation 'org.wycliffeassociates.otter.common:audio:0.3.2'
     implementation 'com.github.WycliffeAssociates:tr-wav:0.3.2'
     implementation "org.slf4j:slf4j-api:2.0.0-alpha1"
 
