@@ -1,7 +1,3 @@
-repositories {
-    maven { url "https://jitpack.io" }
-}
-
 dependencies {
     implementation "javazoom:jlayer:$jlayerVer"
     implementation "de.sciss:jump3r:$jump3rVer"

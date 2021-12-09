@@ -7,7 +7,7 @@ enum class Format(val value: String) {
     companion object {
         fun of(ext: String) =
             values().singleOrNull {
-                it.name == ext.toUpperCase() || it.value == ext
+                it.name == ext.uppercase() || it.value == ext
             }
     }
 }
