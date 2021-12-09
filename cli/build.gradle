@@ -12,10 +12,6 @@ application {
     mainClassName = "org.bibletranslationtools.audiocompressor.Main"
 }
 
-repositories {
-    maven { url "https://jitpack.io" }
-}
-
 dependencies {
     implementation "info.picocli:picocli:$picocliVer"
     kapt "info.picocli:picocli-codegen:$picocliVer"
